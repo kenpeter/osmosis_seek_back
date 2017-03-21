@@ -23,6 +23,7 @@ module.exports = function(app, db) {
     var myRes = db
       .collection('jobs')
       .find()
+			.sort({ datePosted: -1 })
       .toArray((err, cursor) => {
         if(err)
           console.error(err);
