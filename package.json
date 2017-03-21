@@ -5,11 +5,14 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "cors": "^2.8.1",
     "express": "^4.15.2",
     "mongodb": "^2.2.25",
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon osmosis_seek_back_server.js",
+    "start": "forever start -a -l forever.log -o out.log -e err.log ./osmosis_seek_back_server.js",
+    "stop": "forever stop ./osmosis_seek_back_server.js"
   }
 }
