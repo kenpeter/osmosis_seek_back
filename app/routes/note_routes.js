@@ -20,9 +20,22 @@ module.exports = function(app, db) {
   */
 
   app.get('/job/list', (req, res) => {
+		var limit = req.query.limit;
+
+		if(limit) {
+			limit = parseInt(limit);
+		}
+		else {
+			limit = 0;
+		}
+
+		//console.log('-- test --');
+		//console.log(limit);
+
     var myRes = db
       .collection('jobs')
       .find()
+			.limit(limit)
 			.sort({ datePosted: -1 })
       .toArray((err, cursor) => {
         if(err)
